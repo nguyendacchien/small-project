@@ -27,7 +27,7 @@
                                     <tr>
                                         <td>{{$food->name}}</td>
                                         <td>{{$food->category->name}}</td>
-                                        <td>{{$food->image}}</td>
+                                        <td><img src="{{asset('storage/'.$food->image)}}" style="width: 100px;height: 100px"></td>
                                         <td>{{($food->price).' VNĐ'}}</td>
                                         <td>{{$food->desc}}</td>
                                         <td><a href="{{route('food.edit',$food->id)}}" class="btn btn-warning">sửa</a></td>
@@ -35,7 +35,6 @@
 {{--                                        <td class="text-primary">--}}
 {{--                                            $36,738--}}
 {{--                                        </td>--}}
-
                                     </tr>
                                     @empty
                                         <tr><td colspan="5">No data</td></tr>

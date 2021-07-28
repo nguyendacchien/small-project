@@ -4,7 +4,7 @@
     <div class="content">
         <div class="col-md-12">
             <div class="card">
-                <form method="post" action="{{route('food.store')}}">
+                <form method="post" action="{{route('food.store')}}" enctype="multipart/form-data">
                     @csrf
                     <h2>Thêm mới khách hàng</h2>
                     <div class="row g-3 mx-3">
@@ -17,13 +17,14 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <label for="inputAddress" class="form-label">Image</label>
-                            <input type="text" class="form-control @error('image') is-invalid @enderror" placeholder="asdasdfas" aria-label="Last name"
-                                   name="image">
-                            @error('image')
+                            <label for="inputAddress" class="form-label">Price</label>
+                            <input type="text" class="form-control @error('price') is-invalid @enderror" placeholder="1234615" aria-label="Last name"
+                                   name="price">
+                            @error('price')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
+
                         <br>
                         <div class="col-6">
                             <label for="inputAddress" class="form-label">Category:</label>
@@ -34,18 +35,16 @@
                                     <option>category</option>
                                 @endforelse
                             </select>
-
-
                             {{--                                    <input type="text" class="form-control" placeholder="0000" aria-label="First name" name="price">--}}
                         </div>
                         <div class="col-6">
-                            <label for="inputAddress" class="form-label">Price</label>
-                            <input type="text" class="form-control @error('price') is-invalid @enderror" placeholder="1234615" aria-label="Last name"
-                                   name="price">
-                            @error('price')
+                            <label for="inputAddress" class="form-label">Image</label>
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                            @error('image')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
+
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">DESC</label>
                             <input type="text" class="form-control @error('desc') is-invalid @enderror" placeholder="ABC" aria-label="Last name"

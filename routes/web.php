@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//
 //Route::get('/', function () {
 //    return view('shop.master');
 //});
@@ -49,5 +49,12 @@ Route::prefix('admin')->group(function (){
         Route::get('/logout',[LoginController::class,'logout'])->name('logout');
     });
 });
+Route::prefix('/')->group(function (){
+    Route::get('/',[FoodController::class,'show'])->name('shop.show');
+    Route::get('/cart',[FoodController::class,'cart'])->name('shop.cart');
+    Route::get('/addToCart/{id}',[FoodController::class,'addToCart'])->name('shop.addToCart');
+    Route::get('/delete/{id}',[FoodController::class,'deleteCart'])->name('shop.deleteCart');
 
+
+});
 
