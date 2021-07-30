@@ -55,6 +55,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mt-3">add</button>
+                    <a class="btn btn-dark mt-3" href="{{route('category.list')}}">back</a>
                 </form>
             </div>
         </div>

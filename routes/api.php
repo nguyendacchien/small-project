@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[WeatherController::class,'index'])->name('weather');
+Route::get('/user',[\App\Http\Controllers\FoodController::class,'cart']);

@@ -10,13 +10,16 @@ class WeatherController extends Controller
 {
     public function index(Request $request)
     {
-        $nameCity = ($request->cityName) ? $request->cityName : 'hanoi';
+        $nameCity = ($request->cityName) ? $request->cityName : 'hoa binh';
         $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [
                 "q" => $nameCity,
                 "appid" => "02e3323f29bc461c2346db2fe3989729"
             ]
         );
         $city=$request->cityName;
+        if (empty($city)){
+            $city = 'hoa binh';
+        }
         $data = json_decode($response->body());
         $temperature = $data->main->temp - 273;
         $weather = $data->weather[0]->main;

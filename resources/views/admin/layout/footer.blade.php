@@ -1,4 +1,6 @@
 <!--   Core JS Files   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
 <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
@@ -41,3 +43,4 @@
 <script src="{{asset('assets/js/material-dashboard.js?v=2.1.2')}}" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/demo/demo.js')}}"></script>
+{{--<script src="{{asset('assets/js/food.js)}}"></script>--}}

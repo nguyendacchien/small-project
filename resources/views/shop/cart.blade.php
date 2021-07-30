@@ -39,8 +39,9 @@
                                     </thead>
                                     <tbody>
                                     @forelse($carts as $food)
-                                    <tr>
-                                        <td><a class="remove" href="{{route('shop.deleteCart',$food['id'])}}"><fa class="fa fa-close"></fa></a></td>
+                                    <tr id="destroy-{{$food['id']}}">
+                                        <td><a class="remove" delete="{{$food['id']}}"><fa class="fa fa-close"></fa></a></td>
+{{--                                        <td><a class="remove" href="{{route('shop.deleteCart',$food['id'])}}"><fa class="fa fa-close"></fa></a></td>--}}
                                         <td><img src="{{asset('storage/'.$food['image'])}}"></td>
                                         <td><p class="aa-cart-title">{{$food['name']}}</p></td>
                                         <td>{{$food['price']}}</td>

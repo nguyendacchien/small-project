@@ -9,11 +9,11 @@
                     <form action="{{ route('weather') }}" method="get">
                         @csrf
                         <select name="cityName" class="js-example-disabled-results form-submit" onclick="this.form.submit()">
-                            <option value="hanoi">Hà Nội</option>
-                            <option value="hanam">Hà Nam</option>
-                            <option value="Ho Chi Minh">Hồ Chí Minh</option>
-                            <option value="phu tho">Phú thọ</option>
-                            <option value="phu tho">Phú thọ</option>
+                            <option style="display: none" >{{$city}}</option>
+                            <option value="hoa binh">hoa binh</option>
+                            <option value="lai chau">lai chau</option>
+                            <option value="Ho Chi Minh">Ho Chi Minh</option>
+                            <option value="phu tho">phu tho</option>
                         </select>
                     </form>
                     <div class="card card-weather">

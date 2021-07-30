@@ -19,7 +19,7 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::all()->sortByDesc('created_at');
-        return view('admin.foods.list', compact('foods',));
+        return view('admin.foods.list', compact('foods'));
     }
 
     /**
@@ -43,10 +43,10 @@ class FoodController extends Controller
     {
         $path = $request->file('image')->store('images', 'public');
         $food->image = $path;
-        $food->name = $request->input('name');
+        $food->name = $request->name;
         $food->category_id = $request->category;
-        $food->price = $request->input('price');
-        $food->desc = $request->input('desc');
+        $food->price = $request->price;
+        $food->desc = $request->desc;
         $food->save();
         toastr()->success('Bạn đã thêm mới thành công', 'Create');
         return redirect()->route('food.list');
@@ -61,7 +61,7 @@ class FoodController extends Controller
     public function show()
     {
         $foods = Food::all();
-        return view('shop.layout.content', compact('foods',));
+        return view('shop.layout.content', compact('foods'));
     }
 
     /**
@@ -144,22 +144,22 @@ class FoodController extends Controller
         ];
         session()->put('cart', $carts);
 //        session()->flush();
-        toastr()->success('Bạn đã thêm vào giỏ hàng', 'Cart');
-        return redirect()->back();
+//        toastr()->success('Bạn đã thêm vào giỏ hàng', 'Cart');
+//        return redirect()->back();
     }
 
     public function deleteCart($id)
     {
-
-
         $cart=session()->get('cart');
         unset($cart[$id]);
-//        dd($cart);
-//        print_r($cart);
-        return redirect()->back();
-
-
-
-
+        session()->put('cart', $cart);
+//        return redirect()->back();
     }
+
+//    public function search(Request $request,$name)
+//    {
+//        $food =findOrFail($name);
+//        $food->name
+//
+//    }
 }

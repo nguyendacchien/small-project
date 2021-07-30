@@ -117,6 +117,8 @@
 </div>
 
 <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{asset('shop/js/bootstrap.js')}}"></script>
@@ -136,3 +138,4 @@
 <script type="text/javascript" src="{{asset('shop/js/nouislider.js')}}"></script>
 <!-- Custom js -->
 <script src="{{asset('shop/js/custom.js')}}"></script>
+<script src="{{asset('shop/shop.js')}}"></script>
