@@ -7,18 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{asset('login/css.css')}}" rel="stylesheet" />
+    <link href="{{asset('login/css.css')}}" rel="stylesheet"/>
 
 </head>
+@toastr_css
 <body>
 <div class="overlay">
     <!-- LOGN IN FORM by Omar Dsoky -->
     <form method="post" action="{{route('admin.login')}}">
-        @csrf
-        <!--   con = Container  for items in the form-->
+    @csrf
+    <!--   con = Container  for items in the form-->
         <div class="con">
             <!--     Start  header Content  -->
             <header class="head-form">
@@ -36,6 +37,9 @@
          </span>
                 <!--   user name Input-->
                 <input class="form-input" id="txt-input" type="email" placeholder="@UserName" name="email">
+                @error('email')
+                <p>{{$message}}</p>
+                @enderror
 
                 <br>
 
@@ -44,25 +48,29 @@
                 <span class="input-item">
         <i class="fa fa-key"></i>
        </span>
-                <!--   Password Input-->
-                <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" >
 
-                <!--      Show/hide password  -->
+                <!--   Password Input-->
+                <input class="form-input" type="password" placeholder="Password" id="pwd" name="password">
+            <!--     Show/hide password  -->
                 <span>
-        <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+        <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                       @error('password')
+                <p>{{$message}}</p>
+            @enderror
      </span>
 
 
                 <br>
                 <!--        buttons -->
                 <!--      button LogIn -->
-                <button class="log-in"> Log In </button>
+                <button class="log-in" type="submit"> Log In</button>
             </div>
 
             <!--   other buttons -->
             <div class="other">
                 <!--      Forgot Password button-->
                 <button class="btn submits frgt-pass">Forgot Password</button>
+
                 <!--     Sign Up button -->
                 <button class="btn submits sign-up">Sign Up
                     <!--         Sign Up font icon -->
@@ -101,4 +109,7 @@
         crossorigin="anonymous"></script>
 
 </body>
+@jquery
+@toastr_js
+@toastr_render
 </html>

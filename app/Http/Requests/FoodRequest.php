@@ -25,7 +25,7 @@ class FoodRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=>'required',
+//            'image'=>'required',
             'price'=>'required',
             'desc'=>'required',
         ];
@@ -35,7 +35,7 @@ class FoodRequest extends FormRequest
     {
         return[
         'name.required'=>'không được để trống',
-        'image.required'=>'không được để trống',
+//        'image.required'=>'không được để trống',
         'price.required'=>'không được để trống',
         'desc.required'=>'không được để trống',
 

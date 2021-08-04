@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -13,26 +15,20 @@ class LoginController extends Controller
         return view('admin.login.login');
     }
 
-    public function login(Request $request)
+    public function login(UserRequest $request)
     {
-        $user = User::all();
-        foreach ($user as $item) {
-            if ($item->email == $request->email) {
-                $userLogin = [
-                    'name' => $item->name,
-                    'email' => $item->email,
-                ];
-                session()->put('userLogin', $userLogin);
-                return redirect()->route('food.list');
-            }
+
+        $userLogin = $request->only('email','password');
+        if (Auth::attempt($userLogin)){
+            session()->put('userLogin',$userLogin);
+            return redirect()->route('food.list');
         }
-        session()->flash('login_error', 'Account not exits');
         return redirect()->route('admin.formlogin');
     }
 
     public function logout()
     {
-        session()->flush();
+        session()->forget('userLogin');
         return redirect()->route('admin.formlogin');
 
     }

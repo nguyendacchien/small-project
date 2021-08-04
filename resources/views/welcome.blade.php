@@ -130,3 +130,22 @@
         </div>
     </body>
 </html>
+$('.updateqtt').on('input', function () {
+let input = $(this).attr('input')
+let value = $('#' + input).val()
+let origin = window.location.origin
+// $('.updateqtt').load(origin,)
+$.ajax({
+url: origin + '/totalQuantity/' + input,
+method: 'GET',
+type: 'json',
+data: {
+totalQuantity: value
+},
+success: function (res) {
+console.log(res)
+$('#total-' + input).html(res.quantity*res.price);
+},
+})
+})
+

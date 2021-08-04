@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//
-//Route::get('/', function () {
-//    return view('shop.master');
-//});
+
 Route::prefix('admin')->group(function (){
     Route::get('/',[LoginController::class,'index'])->name('admin.formlogin');
     Route::post('/',[LoginController::class,'login'])->name('admin.login');
@@ -31,6 +28,7 @@ Route::prefix('admin')->group(function (){
             Route::get('/update/{id}',[FoodController::class,'edit'])->name('food.edit');
             Route::post('/update{id}',[FoodController::class,'update'])->name('food.update');
             Route::get('/delete/{id}',[FoodController::class,'destroy'])->name('food.delete');
+            Route::get('/search',[FoodController::class,'searchFood'])->name('food.search');
         });
         Route::prefix('category')->group(function (){
             Route::get('/',[CategoryController::class,'index'])->name('category.list');
@@ -51,10 +49,10 @@ Route::prefix('admin')->group(function (){
 });
 Route::prefix('/')->group(function (){
     Route::get('/',[FoodController::class,'show'])->name('shop.show');
+    Route::get('/',[FoodController::class,'show'])->name('shop.show');
     Route::get('/cart',[FoodController::class,'cart'])->name('shop.cart');
     Route::get('/addToCart/{id}',[FoodController::class,'addToCart'])->name('shop.addToCart');
+    Route::get('/totalQuantity/{id}',[FoodController::class,'totalQuantity'])->name('shop.totalQuantity');
     Route::get('/delete/{id}',[FoodController::class,'deleteCart'])->name('shop.deleteCart');
-
-
 });
 

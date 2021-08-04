@@ -99,7 +99,7 @@
                                 {{--                            /* content */--}}
                                 <div class="tab-content">
                                     <!-- Start men product category -->
-                                    <div class="tab-pane fade in active" id="men">
+                                    <div class="tab-pane fade in active" id="men11">
                                         @foreach($foods as $food)
 
                                             <ul class="aa-product-catg">
@@ -107,14 +107,14 @@
                                                 <!-- start single product item -->
                                                 <li>
                                                     <figure>
-                                                        <img src="{{asset('storage/'.$food->image)}}"
-                                                             style="width: 250px;height: 300px" alt="polo shirt img">
+{{--                                                        <img src="{{asset('storage/'.$food->image)}}" style="width: 250px;height: 300px" alt="polo shirt img">--}}
+                                                        <img src="{{asset('storage/images/ILc7AJgXk15lUT0lDnZOCJZxtKat0CnLCgGasSXS.jpg')}}" style="width: 250px;height: 300px" alt="polo shirt img">
                                                         <a class="aa-add-card-btn addToCart" cart="{{$food->id}}">
                                                             <span class="fa fa-shopping-cart"></span>Add To Cart</a>
                                                         <figcaption>
                                                             <h4>{{$food->name}}</h4>
                                                             <span class="aa-product-price">{{$food->price}}</span>
-                                                            <span class="aa-product-price"><del>price</del></span>
+                                                            <span class="aa-product-price">$</span>
                                                         </figcaption>
                                                     </figure>
                                                     <div class="aa-product-hvr-content">
@@ -134,8 +134,8 @@
                                                 </li>
                                             </ul>
                                         @endforeach
-                                        <a class="aa-browse-btn" href="#">Browse all Product <span
-                                                class="fa fa-long-arrow-right"></span></a>
+{{--                                        <a class="aa-browse-btn" href="#">Browse all Product <span--}}
+{{--                                                class="fa fa-long-arrow-right"></span></a>--}}
                                     </div>
                                 </div>
                             </div>

@@ -26,7 +26,7 @@
 
                                 <div class="col-6">
                                     <label for="inputAddress" class="form-label">Image</label>
-                                    <input type="text" class="form-control @error('image') is-invalid @enderror" placeholder="asdasdfas" name="image" value="{{$food->image}}">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" placeholder="asdasdfas" name="image" value="{{$food->image}}">
                                     @error('image')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror

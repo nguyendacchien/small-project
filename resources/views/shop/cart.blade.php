@@ -44,34 +44,41 @@
 {{--                                        <td><a class="remove" href="{{route('shop.deleteCart',$food['id'])}}"><fa class="fa fa-close"></fa></a></td>--}}
                                         <td><img src="{{asset('storage/'.$food['image'])}}"></td>
                                         <td><p class="aa-cart-title">{{$food['name']}}</p></td>
-                                        <td>{{$food['price']}}</td>
-                                        <td><input class="aa-cart-quantity" type="number" value="{{$food['quantity']}}"></td>
-                                        <td>{{$food['price']}}</td>
+                                        <td id="price-{{$food['id']}}">{{$food['price']}}$</td>
+{{--                                        <td><a href="{{route('shop.totalQuantity',$food['id'])}}"><input class="aa-cart-quantity updateqtt" name="quantity" id="{{$food['id']}}" type="number"  value="{{$food['quantity']}}"></a></td>--}}
+                                        <td>
+                                            <input class="aa-cart-quantity updateqtt" input="{{$food['id']}}" name="quantity" id="{{$food['id']}}" type="number"  value="{{$food['quantity']}}">
+                                          </td>
+                                        <td id="total-{{$food['id']}}">{{$food['price']*$food['quantity']}}</td>
                                     </tr>
                                     @empty
                                         <tr><td colspan="6">no Data</td></tr>
                                     @endforelse
+                                    <tr>
+                                        <td>totalPrice</td>
+                                        <td colspan="5"><div class="total-price">{{$totalPrice}}$</div></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </form>
                         <!-- Cart Total view -->
-                        <div class="cart-view-total">
-                            <h4>Cart Totals</h4>
-                            <table class="aa-totals-table">
-                                <tbody>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td>$450</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <td>$450</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>
-                        </div>
+{{--                        <div class="cart-view-total">--}}
+{{--                            <h4>Cart Totals</h4>--}}
+{{--                            <table class="aa-totals-table">--}}
+{{--                                <tbody>--}}
+{{--                                <tr>--}}
+{{--                                    <th>Subtotal</th>--}}
+{{--                                    <td>$450</td>--}}
+{{--                                </tr>--}}
+{{--                                <tr>--}}
+{{--                                    <th>Total</th>--}}
+{{--                                    <td>$450</td>--}}
+{{--                                </tr>--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                            <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>

@@ -24,21 +24,16 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2',
-            'email' => 'required|email|unique:users,email',
-//            'password'=>'required/min:4'
+            'email' => 'required|email',
+            'password'=>'required'
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Ten khong duoc de trong',
-            'name.min' => 'Ten co it nhat 3 ky tu tro len',
             'email.required' => 'Email khong duoc de trong',
             'email.email' => 'Email khong dung dinh dang',
-            'email.unique' => 'Email da ton tai',
-//            'password.required'=> 'password khong duoc de trong',
-//            'password.min'=> 'password co it nhat 4 ky tu'
+            'password.required'=> 'password khong duoc de trong',
         ];
     }
 }

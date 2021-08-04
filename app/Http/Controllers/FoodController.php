@@ -108,7 +108,7 @@ class FoodController extends Controller
     public function destroy($id)
     {
         $food = Food::find($id);
-//        $food->delete();
+        $food->delete();
         toastr()->success('đã xóa thành công', 'Delete');
         return redirect()->route('food.list');
     }
@@ -116,8 +116,14 @@ class FoodController extends Controller
     public function cart()
     {
         $carts = session()->get('cart');
-//        dd($carts);
-        return view('shop.cart', compact('carts'));
+        $total = 0;
+        $totalCart = [];
+        foreach ($carts as $cart){
+            $total = $cart['price']*$cart['quantity'];
+            array_push($totalCart,$total);
+        }
+        $totalPrice=array_sum($totalCart);
+        return view('shop.cart', compact('carts','totalPrice'));
     }
 
     public function addToCart($id)
@@ -135,31 +141,59 @@ class FoodController extends Controller
                 ]
             ];
         }
-        $carts[$id] = [
-            'id' => $food->id,
-            'image' => $food->image,
-            'name' => $food->name,
-            'price' => $food->price,
-            'quantity' => 1,
-        ];
-        session()->put('cart', $carts);
-//        session()->flush();
-//        toastr()->success('Bạn đã thêm vào giỏ hàng', 'Cart');
-//        return redirect()->back();
+        if (isset($carts[$id])){
+            $carts[$id]['quantity'] += 1;
+            session()->put('cart', $carts);
+        }else {
+            $carts[$id] = [
+                'id' => $food->id,
+                'image' => $food->image,
+                'name' => $food->name,
+                'price' => $food->price,
+                'quantity' => 1,
+            ];
+        }
+        return $this->getTotalCart($carts);
     }
 
     public function deleteCart($id)
     {
-        $cart=session()->get('cart');
-        unset($cart[$id]);
-        session()->put('cart', $cart);
-//        return redirect()->back();
+        $carts = session()->get('cart');
+        unset($carts[$id]);
+        return $this->getTotalCart($carts);
     }
 
-//    public function search(Request $request,$name)
-//    {
-//        $food =findOrFail($name);
-//        $food->name
-//
-//    }
+    public function totalQuantity($id , Request $request)
+    {
+        $carts = session()->get('cart');
+        $carts[$id]['quantity'] = $request->totalQuantity ;
+        session()->put('cart', $carts);
+        $data =[
+//            'session' => $carts[$id],
+            'totalQuantity'=>$carts[$id]['quantity'],
+        ];
+        return response()->json($carts[$id]);
+    }
+
+    /**
+     * @param $carts
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTotalCart($carts): \Illuminate\Http\JsonResponse
+    {
+        session()->put('cart', $carts);
+        $total = 0;
+        $totalCart = [];
+        foreach ($carts as $cart) {
+            $total = $cart['price'] * $cart['quantity'];
+            array_push($totalCart, $total);
+        }
+        $totalPrice = array_sum($totalCart);
+        $data = [
+            'totalPrice' => $totalPrice,
+            'totalcart' => count((array)session('cart')),
+
+        ];
+        return response()->json($data);
+    }
 }

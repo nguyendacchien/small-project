@@ -144,10 +144,11 @@
                         <!-- cart box -->
                         <div class="aa-cartbox">
                             <a class="aa-cart-link" href="{{route('shop.cart')}}">
+{{--                                <i class="fas fa-shopping-cart"></i>--}}
                                 <span class="fa fa-shopping-basket"></span>
                                 <span class="aa-cart-title">SHOPPING CART</span>
 {{--                                <span class="aa-cart-notify">0</span>--}}
-                                <span class="aa-cart-notify">{{count((array)session('cart'))}}</span>
+                                <span class="aa-cart-notify" id="total-cart">{{count((array)session('cart'))}}</span>
                             </a>
                             <div class="aa-cartbox-summary">
                                 <ul>
@@ -182,9 +183,9 @@
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
-                            <form action="">
-                                <input type="text" class="input-search" placeholder="Search here ex. 'man' ">
-                                <button type="submit"><span class="fa fa-search"></span></button>
+                            <form method="get" action="{{route('food.search')}}">
+                                <input type="text" name="search" class="input-search" data="{{route('food.search')}}" placeholder="Search here ex. 'man' ">
+                                <button type="submit" class="search"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
                         <!-- / search box -->

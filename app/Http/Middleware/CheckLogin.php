@@ -17,7 +17,8 @@ class CheckLogin
     public function handle(Request $request, Closure $next)
     {
         if (!session()->has('userLogin')){
-            return redirect()->route();
+            toastr()->Error('Vui lòng đăng nhập!','ERROR');
+            return redirect()->route('admin.formlogin');
         }
         return $next($request);
     }
